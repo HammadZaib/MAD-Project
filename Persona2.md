@@ -1,3 +1,3 @@
-Mariam, the working mom
+# Persona 2
 
 Mariam is a 40-year-old working mother of two children. She lives in the suburbs and juggles a busy schedule between work and family responsibilities. Mariam values comfort and practicality in her clothing choices but still wants to look stylish. She prefers online shopping for clothing, shoes, and accessories to save time and avoid the hassle of going to a physical store. Mariam looks for clothing that can be worn for both work and casual occasions. She prefers using an app on her smartphone or tablet to shop during her free time, such as while waiting for her children at soccer practice or during her lunch break at work.
