@@ -1,4 +1,4 @@
-# arget Audience
+# Target Audience
 
 The target audience of a women's clothing shopping app is typically women of different ages, styles, and preferences. However, some common characteristics of the target audience may include:
 
