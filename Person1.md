@@ -1,0 +1,3 @@
+Samiha, the fashion-forward influencer
+
+Samiha is a 25-year-old fashion blogger and social media influencer. She lives in a big city and loves to stay up-to-date with the latest fashion trends. Samiha is a busy woman who enjoys shopping for clothing, accessories, and shoes online. She is willing to pay for unique, high-quality pieces that reflect her individual style. Samiha values convenience and prefers using an app on her smartphone to shop while on the go. She frequently shares her shopping experiences on her social media accounts and often recommends her favorite brands to her followers.
