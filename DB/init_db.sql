@@ -1,4 +1,3 @@
-
 create database Database_Project; 
 use [Database_Project]
 
@@ -19,6 +18,7 @@ create table Users(
 	PRIMARY KEY(User_ID)
 
 );
+
 
 create table Product(
 	Product_ID int not null,
@@ -43,12 +43,15 @@ create table Orders(
 
 );
 
+
+
+
 create table BillingDetails(
 	FirstName varchar(255),
 	LastName varchar(255),
 	Email varchar(255),
 	Address varchar(255),
-	PhoneNO INT,
+	PhoneNO varchar(255),
 	City varchar(255),
 	Country varchar(255),
 	PostalCode INT,
@@ -58,9 +61,6 @@ create table BillingDetails(
 	FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
 	FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
-
-
-
 
 
 
@@ -85,6 +85,9 @@ create table Payment(
 
 );
 
+
+
+/*If a person wants to change his name from profile screen*/
 
 INSERT INTO Users (User_ID, FirstName, LastName, Email, Password, ConfirmPassword, PhoneNO, Gender, DOB)
 VALUES (1, 'Mohammed', 'Ali', 'mohammed.ali@example.com', 'password123', 'password123', '1234567890', 'Male', '1990-01-01');
@@ -202,5 +205,14 @@ VALUES ('Zainab Ali' ,'23456789' ,'2026-03-01' ,202 ,5);
 
 SELECT * FROM Payment
 
+UPDATE Users
+SET FirstName = 'John'
+WHERE User_ID = 4;
+
+SELECT * from Users
+where User_ID = 4;
+
+
+DELETE FROM Users WHERE User_ID = 3;
 
 
