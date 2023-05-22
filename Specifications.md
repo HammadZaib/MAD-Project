@@ -2,7 +2,7 @@
 Women Clothing Shopping App Documentation
 The Women Clothing Shopping App is a mobile application that allows users to browse and purchase various types of women's clothing items. This app provides an easy and convenient way to shop for clothing items from anywhere and at any time.
 
-Features
+- Features
 User Account
 To use the app, users need to create an account by providing their basic information such as name, email address, and password. After creating an account, users can log in to the app to access all the features.
 
