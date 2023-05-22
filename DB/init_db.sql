@@ -1,5 +1,5 @@
 create database Database_Project  
-use [M.A.D_Project]
+use [master]
 
 create table Users(
 	User_ID int NOT NULL,
@@ -8,7 +8,7 @@ create table Users(
 	Email varchar(255),
 	Password varchar(255),
 	ConfirmPassword varchar(255),
-	PhoneNO INT,
+	PhoneNO varchar(255),
 	Gender varchar(255),
 	DOB date,
 	
@@ -22,7 +22,7 @@ create table BillingDetails(
 	LastName varchar(255),
 	Email varchar(255),
 	Address varchar(255),
-	PhoneNO INT,
+	PhoneNO varchar(255),
 	City varchar(255),
 	Country varchar(255),
 	PostalCode INT,
@@ -79,3 +79,13 @@ create table Payment(
 );
 
 
+/*If a person wants to change his name from profile screen*/
+UPDATE Users
+SET FirstName = 'John'
+WHERE User_ID = 4;
+
+SELECT * from Users
+where User_ID = 4;
+
+
+DELETE FROM Users WHERE User_ID = 3;
