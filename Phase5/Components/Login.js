@@ -7,9 +7,9 @@ import {
   Image,
   TouchableHighlight,
 } from "react-native";
-// import LinearGradient from 'react-native-linear-gradient';
+// import { LinearGradient } from 'expo-linear-gradient';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -52,8 +52,8 @@ const LoginScreen = () => {
         >
           <Text style={styles.loginbuttonText}>Login</Text>
         </TouchableHighlight>
-        <TouchableOpacity style={styles.signUpButton}>
-          <Text style={styles.signUpbuttonText}>Sign Up</Text>
+        <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('Signup')}>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
         <View style={styles.orSignup}>
           <View style={styles.line} />
@@ -97,6 +97,7 @@ const LoginScreen = () => {
 
 const styles = {
   container: {
+    backgroundColor: "white",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
