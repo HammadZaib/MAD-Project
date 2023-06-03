@@ -17,46 +17,46 @@ const More = ({ navigation }) => {
         </View>
       </View>
       <View style={styles.menu}>
-        <View style={styles.menuItem}>
+        <TouchableOpacity style={styles.menuItem}>
           <Image source={require("../img/profile.png")} style={styles.menuItemIcon} />
           <Text style={styles.menuItemText}>Profile</Text>
           <Image
             source={require("../img/right-arrow.png")}
             style={styles.rightArrow}
           />
-        </View>
-        <View style={styles.menuItem}>
-          <Image source={require("../img/orders.png")} style={styles.menuItemIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Order')}>
+          <Image source={require("../img/orders.png")} style={styles.menuItemIcon}/>
           <Text style={styles.menuItemText}>Orders</Text>
           <Image
             source={require("../img/right-arrow.png")}
             style={styles.rightArrow}
           />
-        </View>
-        <View style={styles.menuItem}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.menuItem}>
           <Image source={require("../img/call.png")} style={styles.menuItemIcon} />
           <Text style={styles.menuItemText}>Contact Us</Text>
           <Image
             source={require("../img/right-arrow.png")}
             style={styles.rightArrow}
           />
-        </View>
-        <View style={styles.menuItem}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.menuItem}>
           <Image source={require("../img/about.png")} style={styles.menuItemIcon} />
           <Text style={styles.menuItemText}>About Us</Text>
           <Image
             source={require("../img/right-arrow.png")}
             style={styles.rightArrow}
           />
-        </View>
-        <View style={styles.menuItem}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.menuItem}>
           <Image source={require("../img/return.png")} style={styles.menuItemIcon} />
           <Text style={styles.menuItemText}>Return and Exchange</Text>
           <Image
             source={require("../img/right-arrow.png")}
             style={styles.rightArrow}
           />
-        </View>
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.menuItem}
           onPress={() => navigation.navigate("Login")}
@@ -92,10 +92,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f2f2f2",
-    padding: 20,
+    padding: 30,
     width: 390,
     height: 844,
   },
+
   header: {
     flexDirection: "row",
     justifyContent: "space-between",

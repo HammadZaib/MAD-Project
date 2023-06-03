@@ -7,7 +7,7 @@ const ProductScreen = ({navigation}) => {
         <View style={styles.container}>
             <View style={styles.logoContainer}> 
             <Image
-                source={require('../img/Lawn.png')}
+                source={require('../img/galaxy.jpg')}
                 style={styles.image}
                 accessible={true}
                 accessibilityLabel={'Lawn'}
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
         // borderRadius: 20,
       },
       container: {
+        flex: 1,
         width: 390,
         height: 844,
         backgroundColor: '#F2F2F2',
@@ -124,21 +125,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginHorizontal: 10,
       },
-    footerText: {
-      fontSize: 16,
-      color: '#333',
-        
-    },
-    footer: {
-      backgroundColor: 'white',
-      alignItems: 'center',
-      width: 390,
-      height: 74,
-      borderRadius: 15,
-      flex: 1,
-      justifyContent: 'center',
-      flexDirection: 'row',
-    },
+
     footerText: {
       marginHorizontal: 40,
     },
