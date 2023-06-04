@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+create database Database_Project  
+use [M.A.D_Project]
+=======
 create database Database_Project; 
 use [Database_Project]
 
 
 -- drop TABLE Users;
+>>>>>>> f70cfc2562920db35aa62620b81640336988f6bb
 
 create table Users(
 	User_ID int NOT NULL,
@@ -11,7 +16,11 @@ create table Users(
 	Email varchar(255),
 	Password varchar(255),
 	ConfirmPassword varchar(255),
+<<<<<<< HEAD
+	PhoneNO INT,
+=======
 	PhoneNO VARCHAR(255),
+>>>>>>> f70cfc2562920db35aa62620b81640336988f6bb
 	Gender varchar(255),
 	DOB date,
 	
@@ -20,6 +29,26 @@ create table Users(
 );
 
 
+<<<<<<< HEAD
+create table BillingDetails(
+	FirstName varchar(255),
+	LastName varchar(255),
+	Email varchar(255),
+	Address varchar(255),
+	PhoneNO INT,
+	City varchar(255),
+	Country varchar(255),
+	PostalCode INT,
+	
+	User_ID int,
+	Order_ID int,
+	FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
+	FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
+);
+
+
+=======
+>>>>>>> f70cfc2562920db35aa62620b81640336988f6bb
 create table Product(
 	Product_ID int not null,
 	Name varchar(255),
@@ -43,6 +72,8 @@ create table Orders(
 
 );
 
+<<<<<<< HEAD
+=======
 
 
 
@@ -64,6 +95,7 @@ create table BillingDetails(
 
 
 
+>>>>>>> f70cfc2562920db35aa62620b81640336988f6bb
 create table Wishlist(
 	User_ID int,
 	Product_ID int,
@@ -86,6 +118,8 @@ create table Payment(
 );
 
 
+<<<<<<< HEAD
+=======
 
 /*If a person wants to change his name from profile screen*/
 
@@ -216,3 +250,4 @@ where User_ID = 4;
 DELETE FROM Users WHERE User_ID = 3;
 
 
+>>>>>>> f70cfc2562920db35aa62620b81640336988f6bb

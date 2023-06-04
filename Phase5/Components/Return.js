@@ -8,7 +8,7 @@ const ReturnExchangeProcedure = ({navigation}) => {
     <ScrollView style={styles.container}>
       <View style={styles.Header}> 
             <TouchableOpacity>
-                <Icon name="arrow-left" size={20} color="black" onPress={() => goBack()} />
+                <Icon name="arrow-left" size={20} color="black" onPress={() => navigation.navigate('More')} />
                 </TouchableOpacity >
                 <Text style={styles.heading}>RETURN & EXCHANGE PROCEDURE</Text>
             </View>
@@ -58,20 +58,20 @@ const ReturnExchangeProcedure = ({navigation}) => {
         ONCE WE HAVE RECEIVED YOUR RETURN PACKAGE AND YOU HAVE PROVIDED US WITH EITHER YOUR BANK ACCOUNT OR ANY OTHER MEANS TO RECEIVE YOUR MONEY BACK, YOUR REFUND WILL BE PROCESSED WITHIN 7 BUSINESS DAYS. IN THE CASE OF BANK TRANSFER, PLEASE ALLOW ANOTHER 2 TO 4 BUSINESS DAYS FOR THE AMOUNT TO BE CREDITED TO YOUR BANK ACCOUNT.
       </Text>
     </ScrollView>
-      <View style={styles.footer}>
-              <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Login')}>
-                <Icon name="home" size={20} color="black" />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.footerText}>
-                <Icon name="heart" size={20} color="black" />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.footerText}>
-                <Icon name="shopping-cart" size={20} color="black" />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.footerText}>
-                <Icon name="user" size={20} color="black" />
-              </TouchableOpacity>
-            </View>
+    <View style={styles.footer}>
+            <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Home')}>
+                <Icon name="home" size={20} color="black"/>
+                </TouchableOpacity >
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Wishlist')}>
+                <Icon name="heart" size={20} color="black"/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Cart')}>
+                <Icon name="shopping-cart" size={20} color="black"/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('More')}>
+                <Icon name="user" size={20} color="black"/>
+                </TouchableOpacity>
+              </View>
           </View>
   );
 };

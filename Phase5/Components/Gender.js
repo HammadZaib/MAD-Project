@@ -1,47 +1,39 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, onPress } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-const PaymentScreen = ({navigation}) => {
-    return (
-        <View style={styles.container}>
-            <View style={styles.Header}> 
-            <TouchableOpacity>
-                <Icon name="arrow-left" size={20} color="black"  onPress={() => navigation.navigate('Billing')} />
-                </TouchableOpacity >
-                <Text style={styles.cart}>PAYMENT</Text>
-            </View>
-            <Text style={styles.info}>Let's Make Payment</Text>
-            <View style={styles.formContainer}>
-                <Text style={styles.label}>Card Holder's Name</Text>
-                <TextInput
-                style={styles.input}
-                placeholder="Card Holder's Name"
-                keyboardType="Card-Holder's-Name"
-            />
-            <Text style={styles.label}>Card Number</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Card Number"
-                keyboardType="Card-Number"
-            />
-            <Text style={styles.label}>Email</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Expiry"
-                keyboardType="Date"
-            />
-            <Text style={styles.label}>CVC</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="CVC"
-                secureTextEntry={true}
-            />
+import { View, Text, TextInput, TouchableOpacity, StyleSheet,Picker, Image, onPress, ScrollView} from 'react-native';
+import Icon from "react-native-vector-icons/FontAwesome";
 
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
-            <Text style={styles.buttonText}>PAY</Text>
+const GenderScreen = () => {
+  const [selectedGender, setSelectedGender] = useState('');
+
+  const handleGenderChange = (gender) => {
+    setSelectedGender(gender);
+  };
+
+  return (
+    <View style={styles.container}>
+    <View style={styles.Header}> 
+    <TouchableOpacity>
+        <Icon name="arrow-left" size={20} color="black" onPress={() => navigation.navigate('Profile')} />
+        </TouchableOpacity >
+        <Text style={styles.cart}>PROFILE</Text>
+    </View>
+    <Text style={styles.info}>Select Your Gender</Text>
+    <View style={styles.formContainer}>
+      <Picker
+        style={styles.input}
+        selectedValue={selectedGender}
+        onValueChange={handleGenderChange}
+      >
+        <Picker.Item label="Select Gender" value="" />
+        <Picker.Item label="Male" value="male" />
+        <Picker.Item label="Female" value="female" />
+        <Picker.Item label="Other" value="other" />
+      </Picker>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('More')}>
+            <Text style={styles.buttonText}>UPDATE GENDER</Text>
             </TouchableOpacity>
-            </View>
-            <View style={styles.footer}>
+    </View>
+    <View style={styles.footer}>
             <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Home')}>
                 <Icon name="home" size={20} color="black"/>
                 </TouchableOpacity >
@@ -55,10 +47,10 @@ const PaymentScreen = ({navigation}) => {
                 <Icon name="user" size={20} color="black"/>
                 </TouchableOpacity>
               </View>
-            </View>
-        );
-    };
-  
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
     container: {
         width: 390,
@@ -71,13 +63,13 @@ const styles = StyleSheet.create({
         height: 74,
         borderRadius: 15,
         flexDirection: 'row',
-        backgroundColor: '#F1F1F1',
+        backgroundColor: 'F1F1F1',
         justifyContent: 'center',
         alignItems: 'center',
     },
     cart: {
         fontSize: 16,
-        fontWeight: 'bold',
+        fontWeight: '600',
         marginHorizontal: 130,
         letterSpacing: 2,
         // fontFamily: 'Lato_900Black',
@@ -85,39 +77,36 @@ const styles = StyleSheet.create({
     info:{
         marginTop: 30,
         textAlign: 'center',
-        letterSpacing: 3,
+        letterSpacing: 2,
         fontSize: 20,
-        fontWeight: 'bold',
+        fontWeight: '600',
         // fontFamily: 'Lato_900Black',
     },
     formContainer: {
-        width: '100%',
-        paddingTop: 57,
+        width: '90%',
+        paddingTop: 40,
         marginHorizontal: 40,
-      },
-      label: {
-        fontWeight: 'bold',
-        fontSize: 14,
-        marginBottom: 4,
-        padding: 10
+    
       },
       input: {
-        borderRadius: 15,
+        borderRadius: 25,
         backgroundColor: 'white',
         width: 300,
         height: 40,
-        padding: 20,
+        padding: 5,
         marginBottom: 16,
       },
       button: {
         backgroundColor: '#ED203E',
         borderRadius: 25,
-        width: 152,
+        width: 200,
         alignItems: 'center',
         padding: 10,
         marginBottom: 16,
         marginTop: 10,
         height: 50,
+        justifyContent: 'center',
+        marginLeft: 62,
       },
       buttonText: {
         color: 'white',
@@ -127,9 +116,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
 
       },
-
-    footer: {
-        position: "absolute",
+      footer: {
+        position: "fixed",
         bottom: 0,
         left: 0,
         right: 0,
@@ -152,6 +140,7 @@ const styles = StyleSheet.create({
       inactiveIcon: {
         tintColor: "#b4b4b4",
       },
+
 });
-  
-export default PaymentScreen;
+
+export default GenderScreen;

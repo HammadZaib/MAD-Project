@@ -6,13 +6,13 @@ const ProfileScreen = ({navigation}) => {
         <View style={styles.container}>
             <View style={styles.Header}> 
             <TouchableOpacity>
-                <Icon name="arrow-left" size={20} color="black" onPress={() => goBack()} />
+                <Icon name="arrow-left" size={20} color="black" onPress={() => navigation.navigate('More')}/>
                 </TouchableOpacity >
                 <Text style={styles.cart}>PROFILE</Text>
             </View>
             <Text style={styles.info}>Account Information</Text>
             <View style={styles.main}>
-            <TouchableOpacity style={styles.fields}>
+            <TouchableOpacity style={styles.fields}  onPress={() => navigation.navigate('Name')}>
                 <Text>Full name</Text>
                 <Image source={require('../img/right-arrow.png')}
                 style={styles.image}
@@ -20,7 +20,7 @@ const ProfileScreen = ({navigation}) => {
                 accessibilityLabel={'right-arrow'}
                 />
             </TouchableOpacity >
-            <TouchableOpacity style={styles.fields}>
+            <TouchableOpacity style={styles.fields}  onPress={() => navigation.navigate('Pass')}>
                 <Text>Change Password</Text>
                 <Image source={require('../img/right-arrow.png')}
                 style={styles.image}
@@ -28,7 +28,7 @@ const ProfileScreen = ({navigation}) => {
                 accessibilityLabel={'right-arrow'}
                 />
             </TouchableOpacity >
-            <TouchableOpacity style={styles.fields}>
+            <TouchableOpacity style={styles.fields}  onPress={() => navigation.navigate('Mob')}>
                 <Text>Add Mob</Text>
                 <Image source={require('../img/right-arrow.png')}
                 style={styles.image}
@@ -36,7 +36,7 @@ const ProfileScreen = ({navigation}) => {
                 accessibilityLabel={'right-arrow'}
                 />
             </TouchableOpacity >
-            <TouchableOpacity style={styles.fields}>
+            <TouchableOpacity style={styles.fields}  onPress={() => navigation.navigate('Email')}>
                 <Text>Change Email</Text>
                 <Image source={require('../img/right-arrow.png')}
                 style={styles.image}
@@ -44,7 +44,7 @@ const ProfileScreen = ({navigation}) => {
                 accessibilityLabel={'right-arrow'}
                 />
             </TouchableOpacity >
-            <TouchableOpacity style={styles.fields}>
+            <TouchableOpacity style={styles.fields}  onPress={() => navigation.navigate('Gender')}>
                 <Text>Gender</Text>
                 <Image source={require('../img/right-arrow.png')}
                 style={styles.image}
@@ -52,7 +52,7 @@ const ProfileScreen = ({navigation}) => {
                 accessibilityLabel={'right-arrow'}
                 />
             </TouchableOpacity >
-            <TouchableOpacity style={styles.fields}>
+            <TouchableOpacity style={styles.fields}  onPress={() => navigation.navigate('Birthday')}>
                 <Text>Birthday</Text>
                 <Image source={require('../img/right-arrow.png')}
                 style={styles.image}
@@ -61,20 +61,20 @@ const ProfileScreen = ({navigation}) => {
                 />
             </TouchableOpacity >                                    
             </View>
-              <View style={styles.footer}>
-              <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Login')}>
-                <Icon name="home" size={20} color="black" />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.footerText}>
-                <Icon name="heart" size={20} color="black" />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.footerText}>
-                <Icon name="shopping-cart" size={20} color="black" />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.footerText}>
-                <Icon name="user" size={20} color="black" />
-              </TouchableOpacity>
-            </View>
+            <View style={styles.footer}>
+            <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Home')}>
+                <Icon name="home" size={20} color="black"/>
+                </TouchableOpacity >
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Wishlist')}>
+                <Icon name="heart" size={20} color="black"/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Cart')}>
+                <Icon name="shopping-cart" size={20} color="black"/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('More')}>
+                <Icon name="user" size={20} color="black"/>
+                </TouchableOpacity>
+              </View>
             </View>
         );
     };

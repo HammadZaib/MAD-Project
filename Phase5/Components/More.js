@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, onPress} from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const More = ({ navigation }) => {
   return (
@@ -17,7 +18,7 @@ const More = ({ navigation }) => {
         </View>
       </View>
       <View style={styles.menu}>
-        <TouchableOpacity style={styles.menuItem}>
+        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Profile')}>
           <Image source={require("../img/profile.png")} style={styles.menuItemIcon} />
           <Text style={styles.menuItemText}>Profile</Text>
           <Image
@@ -33,7 +34,7 @@ const More = ({ navigation }) => {
             style={styles.rightArrow}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
+        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Contact')}>
           <Image source={require("../img/call.png")} style={styles.menuItemIcon} />
           <Text style={styles.menuItemText}>Contact Us</Text>
           <Image
@@ -41,7 +42,7 @@ const More = ({ navigation }) => {
             style={styles.rightArrow}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
+        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('About')}>
           <Image source={require("../img/about.png")} style={styles.menuItemIcon} />
           <Text style={styles.menuItemText}>About Us</Text>
           <Image
@@ -49,7 +50,7 @@ const More = ({ navigation }) => {
             style={styles.rightArrow}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
+        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Return')}>
           <Image source={require("../img/return.png")} style={styles.menuItemIcon} />
           <Text style={styles.menuItemText}>Return and Exchange</Text>
           <Image
@@ -69,21 +70,20 @@ const More = ({ navigation }) => {
           />
         </TouchableOpacity>
       </View>
-      <View style={[styles.footer, { position: "absolute", bottom: 0 }]}>
-        <Image source={require("../img/home.png")} style={styles.footerIcon} />
-        <Image
-          source={require("../img/favourite.png")}
-          style={styles.footerIcon}
-        />
-        <Image
-          source={require("../img/message.png")}
-          style={styles.footerIcon}
-          />
-        <Image
-          source={require("../img/more.png")}
-          style={[styles.footerIcon, { marginRight: 0 }]}
-        />
-      </View>
+      <View style={styles.footer}>
+            <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Home')}>
+                <Icon name="home" size={20} color="black"/>
+                </TouchableOpacity >
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Wishlist')}>
+                <Icon name="heart" size={20} color="black"/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Cart')}>
+                <Icon name="shopping-cart" size={20} color="black"/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('More')}>
+                <Icon name="user" size={20} color="black"/>
+                </TouchableOpacity>
+              </View>
     </View>
   );
 };
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   footer: {
-    position: "absolute",
+    position: "fixed",
     bottom: 0,
     left: 0,
     right: 0,
@@ -174,7 +174,6 @@ const styles = StyleSheet.create({
   },
   inactiveIcon: {
     tintColor: "#b4b4b4",
-  },
-});
-
+  }
+})
 export default More;
