@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, onPress } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import ProductScreen from './Product';
-const CartScreen = ({navigation}) => {
+
+const WishlistScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.Header}> 
             <TouchableOpacity>
-                <Icon name="arrow-left" size={20} color="black" onPress={() => navigation.navigate('Product')} />
+                <Icon name="arrow-left" size={20} color="black" onPress={() => navigation.navigate('Home')} />
                 </TouchableOpacity >
-                <Text style={styles.cart}>Shopping Cart</Text>
+                <Text style={styles.cart}>Wishlist</Text>
             </View>
             <View style={styles.body}>
                 <View style={styles.squares}>
@@ -43,23 +43,6 @@ const CartScreen = ({navigation}) => {
                 </TouchableOpacity >
             </View>
             </View>
-            <View style={styles.orderDetailsContainer}>
-          <View style={styles.orderDetail}>
-            <Text style={styles.orderDetailLabel}>SubTotal</Text>
-            <Text style={styles.orderDetailValue}>$10.00</Text>
-          </View>
-          <View style={styles.orderDetail}>
-            <Text style={styles.orderDetailLabel}>Shipping</Text>
-            <Text style={styles.orderDetailValue}>$15.00</Text>
-          </View>
-          <View style={styles.orderTotal}>
-            <Text style={styles.orderTotalLabel}>Total Price</Text>
-            <Text style={styles.orderTotalValue}>$45.00</Text>
-          </View>
-        </View>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Billing')}>
-            <Text style={styles.buttonText}>CHECKOUT</Text>
-            </TouchableOpacity>
             <View style={styles.footer}>
             <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Home')}>
                 <Icon name="home" size={20} color="black"/>
@@ -98,7 +81,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '600',
         marginHorizontal: 100,
-        
+        letterSpacing: 3,
     },
 
     body:{
@@ -221,4 +204,4 @@ const styles = StyleSheet.create({
       },
 });
   
-export default CartScreen;
+export default WishlistScreen;

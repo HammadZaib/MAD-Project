@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, onPress } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, onPress, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ProductScreen = ({navigation}) => {
     return (
-        <View style={styles.container}>
+      <View>
+        <ScrollView style={styles.container}>
             <View style={styles.logoContainer}> 
             <Image
                 source={require('../img/Lawn.png')}
@@ -13,35 +14,43 @@ const ProductScreen = ({navigation}) => {
                 accessibilityLabel={'Lawn'}
             />
             </View>
-            <View>
+            
             <View style={styles.formContainer}>
                 <Text style={styles.name}>Breeze Lawn</Text>
+                                
                 <Text style={styles.label}>Description</Text>
-                <Text style={styles.text}>Digitally printed and embroidered lawn dresses are the source of pure elegance in the summer season. These lawn dresses have the same grace as your mind and want to buy for this summer season. These lawn dresses are best for all casual and formal wear.</Text>
+                <Text style={styles.text}>OPEN PIC SHOWN ABOVE
+                  FINE QUALITY VELVET.
+                  FULLY EMBROIDED VELVET SHAWL.
+                  VELVET MICRO (9000 HIGH QUALITY)
+                  FORMAL WEAR DESIGNER SHAWL
+                  FREE DELIVERY IN 3/4 DAYS
+                  NEED HELP? CALL 0302-7227071</Text>
+                
                 </View>
                 <View style={styles.buttonTab}>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cart')}>
                 <Icon name="shopping-cart" size={20} color="white"/>
                 <Text style={styles.buttonText}>ADD TO CART</Text>
                 <Text style={styles.price}>| $230</Text>
                 </TouchableOpacity>
                 </View>
-            </View>
+      </ScrollView>
             <View style={styles.footer}>
-            <TouchableOpacity style={styles.footerText}>
+            <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Home')}>
                 <Icon name="home" size={20} color="black"/>
                 </TouchableOpacity >
-                <TouchableOpacity style={styles.footerText}>
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Wishlist')}>
                 <Icon name="heart" size={20} color="black"/>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.footerText}>
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Cart')}>
                 <Icon name="shopping-cart" size={20} color="black"/>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.footerText}>
+                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('More')}>
                 <Icon name="user" size={20} color="black"/>
                 </TouchableOpacity>
               </View>
-      </View>
+              </View>
         );
     };
   
@@ -54,7 +63,7 @@ const styles = StyleSheet.create({
       container: {
         width: 390,
         height: 844,
-        backgroundColor: '#F2F2F2',
+        backgroundColor: '#F1F1F1',
       },
     formContainer: {
       marginTop: 15,
@@ -82,7 +91,7 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: 10,
+      marginTop: 5,
       flexDirection: 'row',
     },
     button: {
@@ -91,8 +100,8 @@ const styles = StyleSheet.create({
       width: 300,
       alignItems: 'center',
       padding: 10,
-      marginBottom: 30,
-      marginTop: 10,
+      marginBottom: 50,
+      marginTop: 50,
       flexDirection: 'row',
     },
     buttonText: {
@@ -111,37 +120,30 @@ const styles = StyleSheet.create({
         fontSize: 11,
         marginBottom: 10,
       },
-      footer:{
-        backgroundColor: 'grey',
-        padding: 10,
-        paddingLeft: 0,
-        width: 390,
-        height: 74,
-        borderRadius: 100,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
-        marginHorizontal: 10,
+      footer: {
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: "#fff",
+        height: 60,
+        flexDirection: "row",
+        justifyContent: "space-around",
+        alignItems: "center",
+        borderRadius: 25,
+        // borderTopWidth: 1,
+        // borderTopColor: '#e2e2e2',
       },
-    footerText: {
-      fontSize: 16,
-      color: '#333',
-        
-    },
-    footer: {
-      backgroundColor: 'white',
-      alignItems: 'center',
-      width: 390,
-      height: 74,
-      borderRadius: 15,
-      flex: 1,
-      justifyContent: 'center',
-      flexDirection: 'row',
-    },
-    footerText: {
-      marginHorizontal: 40,
-    },
+      footerIcon: {
+        width: 25,
+        height: 25,
+      },
+      activeIcon: {
+        tintColor: "#000",
+      },
+      inactiveIcon: {
+        tintColor: "#b4b4b4",
+      },
 });
   
 export default ProductScreen;
