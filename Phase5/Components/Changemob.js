@@ -1,8 +1,26 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, onPress, ScrollView} from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
+import axios from 'axios';
 
 const ChangemobScreen = ({navigation}) => {
+  const [number, setNumber] = useState('');
+
+  const handleUpdateNumber = () => {
+    axios
+      .post("http://localhost:5000/api/number", {
+      number,
+      })
+      .then((response) => {
+        console.log("Number registered successfully");
+        navigation.navigate("More");
+        // Add any additional logic or navigation after successful registration
+      })
+      .catch((error) => {
+        alert("Error saving Number:", error.message);
+        // Handle the error and display an appropriate message to the user
+      });
+  };
     return (
         <View style={styles.container}>
         <View style={styles.Header}> 
@@ -18,8 +36,10 @@ const ChangemobScreen = ({navigation}) => {
                 style={styles.input}
                 placeholder="Phone No"
                 keyboardType="Number"
+                value={number}
+                onChangeText={setNumber}
             />
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('More')}>
+            <TouchableOpacity style={styles.button} onPress={() => handleUpdateNumber()}>
             <Text style={styles.buttonText}>UPDATE PHONE</Text>
             </TouchableOpacity>
             
@@ -115,6 +135,7 @@ const ChangemobScreen = ({navigation}) => {
 
       },
       footer: {
+        width: 390,
         position: "fixed",
         bottom: 0,
         left: 0,

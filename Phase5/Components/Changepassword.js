@@ -1,8 +1,35 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, onPress, ScrollView} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
+import axios from 'axios';
+const ChangepasswordScreen = ({ navigation }) => {
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-const ChangepasswordScreen = ({navigation}) => {
+  const handlePasswordUpdate = () => {
+    // Check if the new password matches the confirmation
+    if (newPassword !== confirmPassword) {
+      alert('New password and confirm password do not match');
+      return;
+    }
+    axios
+    .post("http://localhost:5000/api/password", {
+    currentPassword,
+    newPassword,
+    confirmPassword,
+    })
+    .then((response) => {
+      console.log("Changed Password successfully");
+      navigation.navigate("More");
+      // Add any additional logic or navigation after successful registration
+    })
+    .catch((error) => {
+      alert('Error updating password:', error);
+    });
+};
+
+
     return (
         <View style={styles.container}>
         <View style={styles.Header}> 
@@ -18,21 +45,27 @@ const ChangepasswordScreen = ({navigation}) => {
                 style={styles.input}
                 placeholder="Current Password"
                 secureTextEntry={true}
+                value={currentPassword}
+                onChangeText={setCurrentPassword}
             />
             <Text style={styles.label}>New Password</Text>
             <TextInput
                 style={styles.input}
                 placeholder="New Password"
                 secureTextEntry={true}
+                value={newPassword}
+          onChangeText={setNewPassword}
             />
             <Text style={styles.label}>Confirm Password</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Confirm Password"
                 secureTextEntry={true}
+                value={confirmPassword}
+          onChangeText={setConfirmPassword}
             />
 
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('More')}>
+            <TouchableOpacity style={styles.button} onPress={() => handlePasswordUpdate()}>
             <Text style={styles.buttonText}>UPDATE PASSWORD</Text>
             </TouchableOpacity>
             
@@ -128,6 +161,7 @@ const ChangepasswordScreen = ({navigation}) => {
 
       },
       footer: {
+        width: 390,
         position: "fixed",
         bottom: 0,
         left: 0,

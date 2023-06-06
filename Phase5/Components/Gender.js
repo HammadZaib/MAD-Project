@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet,Picker, Image, onPress, ScrollView} from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
-
-const GenderScreen = () => {
+import axios from 'axios';
+const GenderScreen = ({navigation}) => {
   const [selectedGender, setSelectedGender] = useState('');
 
   const handleGenderChange = (gender) => {
     setSelectedGender(gender);
-  };
-
+    axios
+    .post('http://localhost:5000/api/gender', { gender })
+    .then((response) => {
+      console.log('Gender updated successfully');
+      navigation.navigate('More');
+      // Add any additional logic or navigation after successful gender update
+    })
+    .catch((error) => {
+      alert('Error updating gender:', error.message);
+      // Handle the error and display an appropriate message to the user
+    });
+};
+  
   return (
     <View style={styles.container}>
     <View style={styles.Header}> 
     <TouchableOpacity>
-        <Icon name="arrow-left" size={20} color="black" onPress={() => navigation.navigate('Profile')} />
+        <Icon name="arrow-left" size={20} color="black" onPress={() => navigation.navigate('Profile')}/>
         </TouchableOpacity >
         <Text style={styles.cart}>PROFILE</Text>
     </View>
@@ -29,7 +40,7 @@ const GenderScreen = () => {
         <Picker.Item label="Female" value="female" />
         <Picker.Item label="Other" value="other" />
       </Picker>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('More')}>
+      <TouchableOpacity style={styles.button} onPress={handleGenderChange}>
             <Text style={styles.buttonText}>UPDATE GENDER</Text>
             </TouchableOpacity>
     </View>
@@ -117,6 +128,7 @@ const styles = StyleSheet.create({
 
       },
       footer: {
+        width: 390,
         position: "fixed",
         bottom: 0,
         left: 0,

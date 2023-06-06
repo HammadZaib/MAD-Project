@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
       },
     footer: {
+        width: 390,
         position: "absolute",
         bottom: 0,
         left: 0,
