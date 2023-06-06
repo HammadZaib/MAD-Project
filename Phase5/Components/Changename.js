@@ -1,8 +1,34 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, onPress, ScrollView} from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
+import axios from 'axios';
 
-const ChangenameScreen = ({navigation}) => {
+const ChangenameScreen = ({ navigation }) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
+  const handleUpdateName = () => {
+    const data = {
+      email: 'user@example.com', // Replace with the user's actual email
+      firstName: firstName,
+      lastName: lastName,
+    };
+  
+    axios
+      .post("http://localhost:5000/api/updateName", data)
+      .then((response) => {
+        alert(response.data.message);
+        navigation.navigate("More");
+        // Handle successful name update, e.g., show a success message
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          alert('Error updating name: Not Found');
+        } else {
+          alert('Error updating name:', error.message);
+        }
+      });
+  };
     return (
         <View style={styles.container}>
         <View style={styles.Header}> 
@@ -18,15 +44,19 @@ const ChangenameScreen = ({navigation}) => {
                 style={styles.input}
                 placeholder="First Name"
                 keyboardType="First-Name"
+                value={firstName}
+                onChangeText={setFirstName}
             />
             <Text style={styles.label}>Last Name</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Last Name"
                 keyboardType="Last-Name"
+                value={lastName}
+                onChangeText={setLastName}
             />
 
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('More')}>
+            <TouchableOpacity style={styles.button} onPress={() => handleUpdateName()}>
             <Text style={styles.buttonText}>UPDATE NAME</Text>
             </TouchableOpacity>
             
@@ -121,6 +151,7 @@ const ChangenameScreen = ({navigation}) => {
 
       },
       footer: {
+        width: 390,
         position: "fixed",
         bottom: 0,
         left: 0,

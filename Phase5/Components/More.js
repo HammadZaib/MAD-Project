@@ -1,20 +1,37 @@
-import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, onPress} from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import axios from "axios";
 
-const More = ({ navigation }) => {
+
+  const More = ({ navigation }) => {
+    const [user, setUser] = useState({ firstName: "", lastName: "" });
+  
+    useEffect(() => {
+      fetchUser();
+    }, []);
+  
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/user");
+        const { firstName, lastName } = response.data;
+        setUser({ firstName, lastName });
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      }
+    };
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        {/* <View style={styles.backArrow}></View> */}
-      </View>
+      <View style={styles.header}></View>
       <View style={styles.profile}>
         <Image
           source={require("../img/your-profile-picture.png")}
           style={styles.profilePic}
         />
         <View>
-          <Text style={styles.name}>Hammad Zaib</Text>
+          
+            <Text style={styles.name}>{user.firstName} {user.lastName}</Text>
+        
         </View>
       </View>
       <View style={styles.menu}>
@@ -152,6 +169,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   footer: {
+    width: 390,
     position: "fixed",
     bottom: 0,
     left: 0,

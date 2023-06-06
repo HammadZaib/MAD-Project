@@ -1,8 +1,26 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, onPress, ScrollView} from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
+import axios from 'axios';
 
-const BirthdayScreen = ({navigation}) => {
+const BirthdayScreen = ({ navigation }) => {
+  const [birthday, setBirthday] = useState('');
+
+  const handleUpdateBirthday = () => {
+    axios
+      .post("http://localhost:5000/api/birthday", {
+      birthday,
+      })
+      .then((response) => {
+        console.log("Birthday registered successfully");
+        navigation.navigate("More");
+        // Add any additional logic or navigation after successful registration
+      })
+      .catch((error) => {
+        alert("Error saving Birthday:", error.message);
+        // Handle the error and display an appropriate message to the user
+      });
+  };
     return (
         <View style={styles.container}>
         <View style={styles.Header}> 
@@ -18,8 +36,10 @@ const BirthdayScreen = ({navigation}) => {
                 style={styles.input}
                 placeholder="yyyy-mm-dd"
                 keyboardType="Date"
+                value={birthday}
+                onChangeText={setBirthday}
             />
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('More')}>
+            <TouchableOpacity style={styles.button} onPress={() => handleUpdateBirthday()}>
             <Text style={styles.buttonText}>UPDATE BIRTHDAY</Text>
             </TouchableOpacity>
             
@@ -115,6 +135,7 @@ const BirthdayScreen = ({navigation}) => {
 
       },
       footer: {
+        width: 390,
         position: "fixed",
         bottom: 0,
         left: 0,

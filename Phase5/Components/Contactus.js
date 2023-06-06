@@ -137,6 +137,7 @@ const ContactScreen = ({navigation}) => {
 
       },
       footer: {
+        width: 390,
         position: "fixed",
         bottom: 0,
         left: 0,

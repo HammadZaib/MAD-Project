@@ -1,7 +1,40 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, onPress } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import axios from 'axios';
+
 const PaymentScreen = ({navigation}) => {
+const [cardholdername, setCardholdername] = useState("");
+const [cardnumber, setCardnumber] = useState("");
+const [expiry, setExpiry] = useState("");
+const [cvc, setCvc] = useState("");
+
+const handlepayment = () => {
+  // Perform validation checks
+  if (!cardholdername || !cardnumber || !expiry || !cvc) {
+    console.log("Please fill in all the required fields");
+    return;
+  }
+
+  // Send user data to the server
+  axios
+    .post("http://localhost:5000/api/payment", {
+      cardholdername, 
+      cardnumber,
+      expiry,
+      cvc,
+    })
+    .then((response) => {
+      alert("Payment registered successfully");
+      navigation.navigate("Home");
+      // Add any additional logic or navigation after successful registration
+    })
+    .catch((error) => {
+      console.log("Error saving payment:", error.message);
+      // Handle the error and display an appropriate message to the user
+    });
+};
+
     return (
         <View style={styles.container}>
             <View style={styles.Header}> 
@@ -17,27 +50,35 @@ const PaymentScreen = ({navigation}) => {
                 style={styles.input}
                 placeholder="Card Holder's Name"
                 keyboardType="Card-Holder's-Name"
+                value={cardholdername}
+                onChangeText={setCardholdername}
             />
             <Text style={styles.label}>Card Number</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Card Number"
                 keyboardType="Card-Number"
+                value={cardnumber}
+                onChangeText={setCardnumber}
             />
-            <Text style={styles.label}>Email</Text>
+            <Text style={styles.label}>Expiry</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Expiry"
+                placeholder="yyyy-mm-dd"
                 keyboardType="Date"
+                value={expiry}
+                onChangeText={setExpiry}
             />
             <Text style={styles.label}>CVC</Text>
             <TextInput
                 style={styles.input}
                 placeholder="CVC"
                 secureTextEntry={true}
+                value={cvc}
+                onChangeText={setCvc}
             />
 
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity style={styles.button} onPress={() => handlepayment()}>
             <Text style={styles.buttonText}>PAY</Text>
             </TouchableOpacity>
             </View>
@@ -129,6 +170,7 @@ const styles = StyleSheet.create({
       },
 
     footer: {
+      width: 390,
         position: "absolute",
         bottom: 0,
         left: 0,

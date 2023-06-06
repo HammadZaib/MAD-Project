@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     height: 20,
   },
   footer: {
-    width: windowWidth,
+    width: 390,
     position: "fixed",
     bottom: 0,
     left: 0,
