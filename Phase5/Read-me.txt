@@ -1,0 +1,30 @@
+install the following packages in the Components folder:
+
+npm install cors
+npm install axios
+npm install express
+npm install init	
+npm install mssql
+npm install msnodesqlv8
+
+
+
+install the following packages in the react_app folder:
+
+
+npm install react-native-vector-icons
+npm install @react-navigation/native
+npm install @react-navigation/native-stack
+
+
+
+
+
+open the Components folder in terminal. Type "node Server.js". 
+
+expo start or npm start in the react_app folder.
+
+
+Use the Updated DB. Initialize the database using the code in it.
+
+
