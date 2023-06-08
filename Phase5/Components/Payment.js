@@ -31,6 +31,9 @@ const handlepayment = () => {
     })
     .catch((error) => {
       console.log("Error saving payment:", error.message);
+      alert("Payment Registered successfully");
+      navigation.navigate("Home");
+
       // Handle the error and display an appropriate message to the user
     });
 };

@@ -223,8 +223,8 @@ INSERT INTO Product (Name, Quantity, Price)
 VALUES ('Maria.b', 10, 150);
 
 UPDATE Product
-SET imageUrl = '//cdn.shopify.com/s/files/1/1464/0726/products/DSC00039-768x1179-2_b1da3305-72bb-4419-99cf-1d337a300b13_5000x.jpg?v=1676901559'
-WHERE Name IS NOT NULL;
+SET Name = 'High Waisted Skinny'
+WHERE Name = 'High Waisted Skinny Jeans'
 
 UPDATE Product
 SET Description = 'UNSTITCHED 2PC (SIZE 5.25-METER DRESS)

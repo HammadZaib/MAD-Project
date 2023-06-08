@@ -4,6 +4,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, onPress, Sc
 
 const AboutScreen = ({navigation}) => {
   return (
+
     <View>
     <ScrollView style={styles.container}>
     

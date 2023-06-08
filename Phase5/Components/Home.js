@@ -99,7 +99,7 @@ const Home = ({ navigation }) => {
         </View>
         <View style={styles.banner}>
           <Image
-            source={require("../img/banner.png")}
+            source={require("../img/Lawn.png")}
             style={styles.bannerImage}
           />
         </View>
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 16,
-    marginBottom: 8,
+    marginBottom: 20,
   },
   column: {
     flex: 1,
@@ -213,6 +213,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 8,
+    paddingHorizontal: 20,
   },
   productContainer: {
     width: imageWidth,

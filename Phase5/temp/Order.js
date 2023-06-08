@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image, onPress } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import ProfileScreen from "./Profile";
 
 const OrderScreen = ({ navigation }) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -12,10 +11,11 @@ const OrderScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-            <View style={styles.Header}> 
-            <TouchableOpacity>
-                <Icon name="bars" size={20} color="black" onPress={() => navigation.navigate('Profile')}/>
-                </TouchableOpacity >
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon name="bars" size={20} color="black" style={styles.bars} />
+        </TouchableOpacity>
+        <View style={styles.logoContainer}>
           <Image
             source={require("../img/logo.png")}
             style={styles.logoimage}
@@ -23,6 +23,7 @@ const OrderScreen = ({ navigation }) => {
             accessibilityLabel={"logo"}
           />
         </View>
+      </View>
       <View style={styles.orderDetailsCenter}>
         <TouchableOpacity style={styles.orderButton} onPress={toggleDetails}>
           <Text style={styles.orderNo}>#12345</Text>
@@ -89,19 +90,19 @@ const OrderScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <View style={styles.footer}>
-            <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Home')}>
-                <Icon name="home" size={20} color="black"/>
-                </TouchableOpacity >
-                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Wishlist')}>
-                <Icon name="heart" size={20} color="black"/>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('Cart')}>
-                <Icon name="shopping-cart" size={20} color="black"/>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('More')}>
-                <Icon name="user" size={20} color="black"/>
-                </TouchableOpacity>
-              </View>
+        <TouchableOpacity style={styles.footerIcon} onPress={() => navigation.navigate('Login')}>
+          <Icon name="home" size={20} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.footerIcon}>
+          <Icon name="heart" size={20} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.footerIcon}>
+          <Icon name="shopping-cart" size={20} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.footerIcon}>
+          <Icon name="user" size={20} color="black" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -130,22 +131,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f1f1f1",
-    width: 390,
   },
-  Header: {
-    width: 390,
+  header: {
     height: 74,
-    borderRadius: 15,
-    flexDirection: 'row',
-    backgroundColor: '#F1F1F1',
-    justifyContent: 'center',
-    alignItems: 'center',
-},
-logoimage: {
-    width: 150,
-    height: 29,
-    marginHorizontal: 80,
-},
+    flexDirection: "row",
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 10,
+  },
+  bars: {
+    marginRight: "auto",
+  },
+  logoContainer: {
+    alignItems: "center",
+    width: "50%",
+  },
+  logoimage: {
+    width: 208,
+    height: 41,
+  },
   orderButton: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -229,7 +234,6 @@ logoimage: {
     color: "#888",
   },
   footer: {
-    width: 390,
     position: "absolute",
     bottom: 0,
     left: 0,

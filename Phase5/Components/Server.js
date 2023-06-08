@@ -218,6 +218,7 @@ app.post('/api/payment', (req, res) => {
 
       if (err) {
         console.error('Error saving payment:', err.message);
+        
         return res.status(500).json({ error: 'Internal server error' });
       }
 
